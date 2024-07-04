@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import MobileMenu from './MobileMenu'
 import Image from 'next/image'
-import { ClerkLoaded, ClerkLoading, SignedIn, SignedOut } from '@clerk/nextjs'
+import { ClerkLoaded, ClerkLoading, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 const Navbar = () => {
   return (
@@ -35,8 +35,24 @@ const Navbar = () => {
           <div className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-gray-500 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"></div>
         </ClerkLoading>
         <ClerkLoaded>
-          <SignedIn>Signed In</SignedIn>
-          <SignedOut>Signed Out</SignedOut>
+          <SignedIn>
+            <div className="cursor-pointer">
+              <Image src="/people.png" alt='' width={20} height={20} />
+            </div>
+            <div className="cursor-pointer">
+              <Image src="/messages.png" alt='' width={20} height={20} />
+            </div>
+            <div className="cursor-pointer">
+              <Image src="/notifications.png" alt='' width={20} height={20} />
+            </div>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <div className="flex items-center gap-2 text-sm">
+              <Image src="/login.png" alt='' width={20} height={20} />
+              <Link href="/sign-in" >Login/Register</Link>
+            </div>
+          </SignedOut>
         </ClerkLoaded>
         <MobileMenu />
       </div>
