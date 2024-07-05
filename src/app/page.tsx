@@ -1,4 +1,5 @@
 import AddPost from "@/components/AddPost"
+import Feed from "@/components/Feed"
 import LeftMenu from "@/components/LeftMenu"
 import RightMenu from "@/components/RightMenu"
 import Stories from "@/components/Stories"
@@ -13,6 +14,7 @@ const Homepage = () => {
         <div className="">
           <Stories/>
           <AddPost/>
+          <Feed/>
         </div>
       </div>
       {/* Right */}
