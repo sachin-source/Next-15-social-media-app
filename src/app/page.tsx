@@ -6,7 +6,7 @@ import Stories from "@/components/Stories"
 
 const Homepage = () => {
   return (
-    <div className='flex gap-6 xl:block'>
+    <div className='flex gap-6 xl:block pt-6'>
       {/* Left */}
       <div className="hidden xl:block w-[20%]"> <LeftMenu/> </div>
       {/* Center */}
