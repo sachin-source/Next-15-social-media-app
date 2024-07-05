@@ -1,5 +1,6 @@
 import LeftMenu from "@/components/LeftMenu"
 import RightMenu from "@/components/RightMenu"
+import Stories from "@/components/Stories"
 
 const Homepage = () => {
   return (
@@ -7,7 +8,11 @@ const Homepage = () => {
       {/* Left */}
       <div className="hidden xl:block w-[20%]"> <LeftMenu/> </div>
       {/* Center */}
-      <div className="w-full lg:w-[70%] xl:w-[50%]"></div>
+      <div className="w-full lg:w-[70%] xl:w-[50%]">
+        <div className="">
+          <Stories/>
+        </div>
+      </div>
       {/* Right */}
       <div className="hidden lg:block w-[30%]"> <RightMenu/> </div>
     </div>
