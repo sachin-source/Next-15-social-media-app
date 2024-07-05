@@ -1,4 +1,5 @@
 import LeftMenu from "@/components/LeftMenu"
+import RightMenu from "@/components/RightMenu"
 
 const Homepage = () => {
   return (
@@ -8,7 +9,7 @@ const Homepage = () => {
       {/* Center */}
       <div className="w-full lg:w-[70%] xl:w-[50%]"></div>
       {/* Right */}
-      <div className="hidden lg:block w-[30%]"></div>
+      <div className="hidden lg:block w-[30%]"> <RightMenu/> </div>
     </div>
   )
 }
