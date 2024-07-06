@@ -3,7 +3,7 @@ import React from 'react'
 
 const AddPost = () => {
   return (
-    <div className='p-4 bg-white rounded-lg flex gap-4 justify-between text-sm' >
+    <div className='p-4 bg-white shadow-md rounded-lg flex gap-4 justify-between text-sm' >
       {/* AVATAR */}
       <Image className="w-12 h-12 object-cover rounded-full" width={48} height={12} alt='' src="https://images.pexels.com/photos/979722/pexels-photo-979722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
       {/* POST */}
