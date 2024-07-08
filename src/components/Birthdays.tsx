@@ -2,7 +2,7 @@ import React from 'react'
 
 const Birthdays = () => {
   return (
-    <div>Birthdays</div>
+    <div className='p-4 bg-white rounded-lg shadow-md text-sm' >Birthdays</div>
   )
 }
 
