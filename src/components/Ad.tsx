@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-const Ad = ({ size } : { size : "sm" | "md" | "lg" }) => {
+const Ad = ({ size }: { size: "sm" | "md" | "lg" }) => {
   return (
     <div className='p-4 bg-white rounded-lg shadow-md text-sm' >
       {/* TOP */}
@@ -15,8 +15,16 @@ const Ad = ({ size } : { size : "sm" | "md" | "lg" }) => {
           <Image alt='' src="https://images.pexels.com/photos/19020136/pexels-photo-19020136/free-photo-of-person-on-rocks-on-sea-shore.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" fill className='rounded-lg object-cover' />
         </div>
         <div className="flex items-center gap-4">
-        <Image alt='' src="https://images.pexels.com/photos/19020136/pexels-photo-19020136/free-photo-of-person-on-rocks-on-sea-shore.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" width={24} height={24} className='rounded-full w-6 h-6 object-cover' />
+          <Image alt='' src="https://images.pexels.com/photos/19020136/pexels-photo-19020136/free-photo-of-person-on-rocks-on-sea-shore.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" width={24} height={24} className='rounded-full w-6 h-6 object-cover' />
+          <span className="text-blue-500 font-medium">BigChef Lounge</span>
         </div>
+        <p className={size === "sm" ? "text-xs" : "text-sm"}>
+          {size == "sm" ? "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, odit." :
+            size == "md" ? "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus autem ut quas. Nostrum, totam incidunt." :
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum deserunt non quos, blanditiis iste reiciendis ut laborum porro impedit?"
+          }
+        </p>
+          <button className="bg-gray-200 text-gray-500 p-2 text-xs rounded-lg">Learn More</button>
       </div>
     </div>
   )
