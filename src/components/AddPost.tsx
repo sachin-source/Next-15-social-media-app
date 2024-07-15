@@ -1,7 +1,30 @@
+import prisma from '@/lib/client';
+import { auth } from '@clerk/nextjs/server';
 import Image from 'next/image'
-import React from 'react'
 
 const AddPost = () => {
+
+  const {userId} = auth();
+
+  console.log( "sachin", userId)
+
+  // const testAction = async (formData:FormData) => {
+  //   "use server"
+  //   if(!userId) return;
+  //   const desc = formData.get('desc') as string;
+  //   try {
+  //     const res = await prisma.post.create({
+  //       data: {
+  //         desc,
+  //         userId
+  //       }
+  //     });
+  //     console.log(res)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
   return (
     <div className='p-4 bg-white shadow-md rounded-lg flex gap-4 justify-between text-sm' >
       {/* AVATAR */}
@@ -9,10 +32,11 @@ const AddPost = () => {
       {/* POST */}
       <div className="flex-1">
         {/* TEXT INPUT */}
-        <div className="flex gap-4">
-          <textarea placeholder='what is on your mind?' className='flex-1 p-2 bg-slate-100 rounded-lg' ></textarea>
+        <form action="" className="flex gap-4">
+          <textarea placeholder='what is on your mind?' className='flex-1 p-2 bg-slate-100 rounded-lg' name='desc' ></textarea>
           <Image className="w-5 h-5 cursor-pointer self-end" width={20} height={20} alt='' src="/emoji.png" />
-        </div>
+          <button type="submit">Send</button>
+        </form>
         {/* POST OPTIONS */}
         <div className="flex items-center gap-4 mt-4 text-gray-400 flex-wrap">
           <div className="flex items-center gap-2 cursor-pointer">
