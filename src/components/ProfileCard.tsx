@@ -19,7 +19,7 @@ const ProfileCard = async () => {
       }
     }
   });
-  console.log(user);
+
   if(!user) return null;
   return (
     <div className='p-4 bg-white rounded-lg shadow-md text-sm flex flex-col gap-6'>
@@ -35,7 +35,7 @@ const ProfileCard = async () => {
         <Image width={12} height={12} src='https://images.pexels.com/photos/17881368/pexels-photo-17881368/free-photo-of-young-woman-in-a-t-shirt-and-jeans.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load' alt='' className='rounded-full object-cover w-3 h-3' />
         <Image width={12} height={12} src='https://images.pexels.com/photos/17881368/pexels-photo-17881368/free-photo-of-young-woman-in-a-t-shirt-and-jeans.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load' alt='' className='rounded-full object-cover w-3 h-3' />
         </div>
-        <span className='text-xs text-gray-500' >500 Followers</span>
+        <span className='text-xs text-gray-500' >{user._count.followers} Followers</span>
         </div>
         <button className='bg-blue-500 text-white text-xs p-2 rounded-md' >My Profile</button>
       </div>
