@@ -31,13 +31,18 @@ const ProfilePage = async ({params}:{params:{username:string}}) => {
   let isBlocked;
 
   if(currentUserId){
-    await prisma.block.findFirst({
+    const res = await prisma.block.findFirst({
       where: {
         blockerId: user.id,
         blockedId: currentUserId,
       }
     })
+
+    if (res) isBlocked = true;
+  } else {
+    isBlocked = false;
   }
+
 
   return (
     <div className='flex gap-6 pt-6 xl:flex'>
