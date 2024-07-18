@@ -14,8 +14,10 @@ export const switchFollow = async (userId:string) => {
                 followingId: userId
             }
         })
-
+        
         if(existingFollow) {
+            
+            console.log("-----------deletingfollow-------------------")
             await prisma.follower.delete({
                 where: {
                     id: existingFollow.id
@@ -30,7 +32,8 @@ export const switchFollow = async (userId:string) => {
             })
 
             if(existingFollowRequest) {
-                await prisma.follower.delete({
+                console.log("-----------deletingfollowRequest-------------------")
+                await prisma.followRequest.delete({
                     where: {
                         id: existingFollowRequest.id
                     }
