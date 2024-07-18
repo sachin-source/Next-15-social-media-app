@@ -12,7 +12,7 @@ const UserInfoCardInteraction = ({ userId, currentUserId, isUserBlocked, isFollo
 
   const follow = async () => {
     try {
-      switchOptimisticFollow("")
+      switchOptimisticFollow("");
       await switchFollow(userId);
       setUserState((prev) => ({
         ...prev,
