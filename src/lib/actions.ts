@@ -151,7 +151,9 @@ export const declineFollowRequest = async (userId:string) => {
     }
 }
 
-export const updateProfile = async (formData:FormData, cover: string) => {
+export const updateProfile = async (prevState: {success:boolean, error:boolean}, payload:{formData:FormData, cover: string}) => {
+    const {formData, cover} = payload;
+
     const fields = Object.fromEntries(formData);
     
     const filteredFields = Object.fromEntries(
@@ -172,12 +174,12 @@ export const updateProfile = async (formData:FormData, cover: string) => {
     const validateFields = Profile.safeParse({cover, ...filteredFields});
     if(!validateFields.success) {
         console.log(validateFields.error.flatten().fieldErrors)
-        return "err";
+        return {success : false, error : true}
     }
 
     const { userId } = auth();
 
-    if(!userId) return "err";
+    if(!userId) return {success : false, error : true}
 
     try {
         await prisma.user.update({
@@ -186,7 +188,8 @@ export const updateProfile = async (formData:FormData, cover: string) => {
             },
             data: validateFields.data
         })
+        return {success : true, error : false}
     } catch (error) {
-        
+        return {success : false, error : true}
     }
 }
