@@ -86,7 +86,7 @@ const UpdateUser = ({ user } : {user: User}) => {
             <input type="text" name="website" placeholder={user.website || "" } className='ring-1 ring-gray-300 p-[13px] rounded-md text-sm' />
           </div>
           </div>
-        <button className='bg-blue-500 p-2 mt-2 rounded-md text-white' >Update</button>
+
         {state.success && <span className='text-green-500' >Profile has been updated!</span> }
         {state.error && <span className='text-red-500' >Something went wrong!</span> }
         <div className="absolute text-xl right-2 top-3 cursor-pointer" onClick={handleClose} >X</div>
