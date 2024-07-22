@@ -1,5 +1,6 @@
 "use client"
 
+import { addComment } from "@/lib/actions";
 import { useUser } from "@clerk/nextjs";
 import { Comment, User } from "@prisma/client"
 import Image from "next/image"
@@ -17,16 +18,50 @@ const CommentList = ({comments, postId}: {comments:CommentWithUser[], postId:any
         (state, value:CommentWithUser) => [value, ...state]
     )
 
+    const add = async () => {
+        if(!user || !desc) return;
+        addOptimisticComment({
+            id: Math.random(),
+            desc,
+            createdAt: new Date(Date.now()),
+            updatedAt: new Date(Date.now()),
+            userId: user.id,
+            postId,
+            user: {
+                id: user.id,
+                username: "Sending, Please wait...",
+                avatar: user.imageUrl,
+                name:"",
+                surname: "",
+                city:"",
+                work:"",
+                school:"",
+                website:"",
+                createdAt: new Date(Date.now()),
+                cover:"",
+                description:""
+            }
+        });
+
+        try {
+            const createdComment = await addComment(postId, desc);
+            setCommentState(prev => [createdComment, ...prev]);
+            
+        } catch (error) {
+            
+        }
+    }
+
   return (
     <>
     { user && (
         <div className="flex items-center gap-4">
         <Image src={user.imageUrl || "noAvatar.png"} alt='' className='w-8 h-8 rounded-full' height={32} width={32} />
 
-        <div className="flex-1 flex items-center justify-between bg-slate-100 rounded-xl text-sm px-6 py-2 w-full">
+        <form action={add} className="flex-1 flex items-center justify-between bg-slate-100 rounded-xl text-sm px-6 py-2 w-full">
             <input type="text" onChange={(e) => setDesc(e.target.value)} placeholder='Write a comment...' className='bg-transparent outline-none flex-1' />
             <Image src="/emoji.png" width={16} height={16} className='cursor-pointer' alt='' />
-        </div>
+        </form>
 
     </div>
     )}
