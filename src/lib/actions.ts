@@ -240,6 +240,7 @@ export const addComment = async (postId:number, desc: string) => {
         })
         return createdComment
     } catch (error) {
+        console.log("err : ", error)
         throw new Error("Something went wrong!");
     }
 }
