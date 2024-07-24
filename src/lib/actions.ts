@@ -272,3 +272,36 @@ export const addPost = async (formData: FormData, img: string) => {
         
     }
 }
+
+export const addStory = async (img: string) => {
+    const { userId } = auth();
+
+    if(!userId) throw new Error("User is not autheticated!");
+
+    try {
+        const existingStory = await prisma.story.findFirst({
+            where: {
+                userId
+            }
+        })
+        if(existingStory){
+            await prisma.story.delete({
+                where: {
+                    id: existingStory.id
+                }
+            })
+        }
+        const createdStory = await prisma.story.create({
+            data: {
+                img,
+                userId,
+                expiresAt: new Date(Date.now() * 24 * 60 * 60 * 1000),
+            },
+            include: {
+                user: true
+            }
+        })
+    } catch (error) {
+        
+    }
+}
