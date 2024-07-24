@@ -295,13 +295,33 @@ export const addStory = async (img: string) => {
             data: {
                 img,
                 userId,
-                expiresAt: new Date(Date.now() * 24 * 60 * 60 * 1000),
+                expiresAt: new Date(Date.now() + (24 * 60 * 60 * 1000)),
             },
             include: {
                 user: true
             }
         })
+        return createdStory;
     } catch (error) {
-        
+        console.log("something went wrong");
+        console.log(error)
+    }
+}
+
+export const deletePost = async (postId: number) => {
+    const { userId } = auth();
+
+    if(!userId) throw new Error("User is not authenticated!");
+
+    try {
+        await prisma.post.delete({
+            where: {
+                id: postId,
+                userId
+            }
+        })
+        revalidatePath("/")
+    } catch (error) {
+        console.log("something went wrong")
     }
 }

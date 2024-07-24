@@ -50,7 +50,7 @@ const StoryList = ({ stories, userId}: { stories: StoryWithUser[], userId: strin
       }
     }
     return (
-        <div className="">
+        <>
             <CldUploadWidget uploadPreset="social" onSuccess={(result, {widget}) => { setImg(result.info); widget.close() }}>
             {({ open }) => {
               return (
@@ -77,7 +77,7 @@ const StoryList = ({ stories, userId}: { stories: StoryWithUser[], userId: strin
                 <span className="font-medium">{ story.user.name || story.user.username }</span>
             </div>
             ))}
-        </div>
+        </>
     )
 }
 
